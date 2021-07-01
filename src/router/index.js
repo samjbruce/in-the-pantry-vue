@@ -1,33 +1,21 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Signup from "../views/User/Signup.vue";
-import Login from "../views/User/Login.vue";
-import Logout from "../views/User/Logout.vue";
+import Signup from "../views/Signup.vue";
+import Login from "../views/Login.vue";
+import Logout from "../views/Logout.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home,
   },
-  {
-    path: "/signup",
-    name: "Signup",
-    component: Signup,
-  },
-  {
-    path: "/login",
-    name: "Login",
-    component: Login,
-  },
-  {
-    path: "/logout",
-    name: "Logout",
-    component: Logout,
-  },
+  { path: "/signup", name: "signup", component: Signup },
+  { path: "/login", name: "login", component: Login },
+  { path: "/logout", name: "logout", component: Logout },
 ];
 
 const router = new VueRouter({
