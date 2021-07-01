@@ -6,7 +6,10 @@
       <router-link v-if="!isLoggedIn()" to="/login"> Login |</router-link>
       <router-link v-if="isLoggedIn()" to="/logout"> Logout |</router-link>
       <router-link v-if="isLoggedIn()" :to="`/users/${getUserId()}`">
-        My Profile</router-link
+        My Profile |</router-link
+      >
+      <router-link v-if="isLoggedIn()" to="ingredients">
+        Ingredients</router-link
       >
     </div>
     <router-view />
