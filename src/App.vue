@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link v-if="!isLoggedIn()" to="/signup">Signup |</router-link>
-      <router-link v-if="!isLoggedIn()" to="/login"> Login |</router-link>
-      <router-link v-if="isLoggedIn()" to="/logout"> Logout |</router-link>
-      <router-link v-if="isLoggedIn()" :to="`/users/${getUserId()}`">
-        My Profile |</router-link
-      >
-      <router-link v-if="isLoggedIn()" to="ingredients">
-        Ingredients</router-link
-      >
+      <router-link to="/">Home |</router-link>
+      <span v-if="!isLoggedIn()">
+        <router-link to="/signup">Signup |</router-link>
+        <router-link to="/login"> Login |</router-link>
+        <router-link v-if="isLoggedIn()" to="/logout"> Logout |</router-link>
+      </span>
+      <span v-if="isLoggedIn()">
+        <router-link :to="`/users/${getUserId()}`"> My Profile |</router-link>
+        <router-link to="/ingredients"> Ingredients |</router-link>
+        <router-link to="/favorites"> Recipe Box |</router-link>
+        <router-link to="/recipes"> Find New Recipes |</router-link>
+        <router-link to="/logout"> Logout |</router-link>
+      </span>
     </div>
     <router-view />
   </div>
