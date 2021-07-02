@@ -12,6 +12,7 @@
         <router-link to="/ingredients"> Ingredients |</router-link>
         <router-link to="/favorites"> Recipe Box |</router-link>
         <router-link to="/recipes"> Find New Recipes |</router-link>
+        <router-link to="/shopping-list"> Shopping List |</router-link>
         <router-link to="/logout"> Logout |</router-link>
       </span>
     </div>

@@ -8,11 +8,13 @@ import UsersShow from "../views/users/Show.vue";
 import IngredientsIndex from "../views/ingredients/Index.vue";
 import FavoritesIndex from "../views/favorites/Index.vue";
 import RecipesIndex from "../views/recipes/Index.vue";
+import RecipesShow from "../views/recipes/Show.vue";
+import ShoppingListIndex from "../views/shopping-list/Index.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: "/home", name: "Home", component: Home },
+  { path: "/", name: "Home", component: Home },
   { path: "/signup", name: "signup", component: Signup },
   { path: "/login", name: "login", component: Login },
   { path: "/logout", name: "logout", component: Logout },
@@ -31,6 +33,16 @@ const routes = [
     path: "/recipes",
     name: "recipes-index",
     component: RecipesIndex,
+  },
+  {
+    path: "/recipes/:id",
+    name: "recipes-show",
+    component: RecipesShow,
+  },
+  {
+    path: "/shopping-list",
+    name: "shopping-list-index",
+    component: ShoppingListIndex,
   },
 ];
 

@@ -15,6 +15,10 @@ export default {
     };
   },
   created: function () {},
-  methods: {},
+  methods: {
+    loginPush: function () {
+      this.$router.push();
+    },
+  },
 };
 </script>

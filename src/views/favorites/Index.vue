@@ -5,7 +5,10 @@
       <h4>{{ favorite.recipe.title }}</h4>
       <p>Prep Time: {{ favorite.recipe.prep_time_minutes }}</p>
       <img :src="favorite.recipe.image_url" alt="" /><br /><br />
-      <button v-on:click="deleteFavorite(favorite)">Delete Favorite</button>
+      <p>Recipe ID: {{ favorite.recipe.recipe_id }}</p>
+      <button v-on:click="deleteFavorite(favorite)">Delete Favorite</button
+      ><br />
+      <button v-on:click="recipesShow(favorite)">More Info</button>
     </div>
   </div>
 </template>
@@ -31,6 +34,9 @@ export default {
       axios.delete(`favorites/${favorite.id}`, favorite).then((response) => {
         console.log(response.data);
       });
+    },
+    recipesShow: function (favorite) {
+      this.$router.push(`/recipes/${favorite.recipe.recipe_id}`);
     },
   },
 };

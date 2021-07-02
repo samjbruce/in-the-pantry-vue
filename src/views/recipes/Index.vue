@@ -3,9 +3,12 @@
     <h2>Your Recipe Box</h2>
     <div v-for="recipe in recipes" v-bind:key="recipe.id">
       <h4>{{ recipe.title }}</h4>
-      <p>Prep Time: {{ recipe.prep_time_minutes }}</p>
-      <img :src="recipes.image_url" alt="" /><br /><br />
-      <button v-on:click="deleteRecipes(recipes)">Delete Recipes</button>
+      <img :src="recipe.image_url" alt="" />
+      <div v-for="ingredient in ingredients" v-bind:key="ingredient.id"></div>
+      <p>Used Ingredients: {{ recipe.used_ingredients }}</p>
+      <br />
+      <button v-on:click="recipesShow(recipe)">More Info</button>
+      <br /><br />
     </div>
   </div>
 </template>
@@ -18,14 +21,19 @@ export default {
   data: function () {
     return {
       recipes: [],
+      ingredients: [],
     };
   },
   created: function () {
     axios.get("/recipes").then((response) => {
       console.log(response.data);
-      this.favorites = response.data;
+      this.recipes = response.data;
     });
   },
-  methods: {},
+  methods: {
+    recipesShow: function (recipe) {
+      this.$router.push(`/recipes/${recipe.recipe_id}`);
+    },
+  },
 };
 </script>
