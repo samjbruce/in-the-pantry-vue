@@ -6,7 +6,8 @@
     <p>Servings: {{ recipe.servings }}</p>
     <p>Ingredients: {{ recipe.ingredients }}</p>
     <p>Instructions: {{ recipe.instructions }}</p>
-    <img :src="recipe.image" alt="" />
+    <img :src="recipe.image" alt="" /><br /><br />
+    <button v-on:click="addToFavorites()">Add to Recipe Box</button>
   </div>
 </template>
 
@@ -27,6 +28,12 @@ export default {
       this.recipe = response.data;
     });
   },
-  methods: {},
+  methods: {
+    addToFavorites: function () {
+      axios.post("/favorites").then((response) => {
+        console.log(response.data);
+      });
+    },
+  },
 };
 </script>
