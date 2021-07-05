@@ -4,7 +4,13 @@
     <div v-for="recipe in recipes" v-bind:key="recipe.id">
       <h4>{{ recipe.title }}</h4>
       <img :src="recipe.image_url" alt="" />
-      <p>Used Ingredients: {{ recipe.used_ingredients }}</p>
+      <p>Used Ingredients:</p>
+      <div
+        v-for="ingredient in recipe.used_ingredients"
+        v-bind:key="ingredient.id"
+      >
+        <p>{{ ingredient }}</p>
+      </div>
       <br />
       <button v-on:click="recipesShow(recipe)">More Info</button>
       <br /><br />

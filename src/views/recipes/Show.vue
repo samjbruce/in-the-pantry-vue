@@ -5,7 +5,6 @@
     <img :src="recipe.image" alt="" />
     <p>Prep Time: {{ recipe.prep_time }} minutes</p>
     <p>Servings: {{ recipe.servings }}</p>
-    <p>{{ recipe.recipe_id }}</p>
     <h3>Ingredients:</h3>
     <div v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.id">
       <p>{{ ingredient }}</p>
@@ -15,7 +14,7 @@
       <p>{{ instruction }}</p>
     </div>
     <br /><br />
-    <button v-on:click="addToFavorites()">Add to Recipe Box</button>
+    <button v-on:click="favoriteNew()">Add to Favorites</button>
   </div>
 </template>
 
@@ -38,9 +37,11 @@ export default {
     });
   },
   methods: {
-    addToFavorites: function () {
-      axios.post("/favorites").then((response) => {
+    favoriteNew: function () {
+      this.newFavoriteParams.spoonacular_api_id = this.$route.params.id;
+      axios.post("/favorites", this.newFavoriteParams).then((response) => {
         console.log(response.data);
+        this.$router.push("/favorites");
       });
     },
   },

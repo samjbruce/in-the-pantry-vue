@@ -7,6 +7,11 @@
     <img :src="user.image_url" />
     <div>
       <form v-on:submit.prevent="updateUser()">
+        <ul>
+          <li v-for="error in errors" v-bind:key="error">
+            {{ error }}
+          </li>
+        </ul>
         <h2>Update Profile</h2>
         <label>Name: </label>
         <input type="text" v-model="editUserParams.name" /><br />
@@ -31,6 +36,7 @@ export default {
   data: function () {
     return {
       user: {},
+      errors: [],
       editUserParams: {},
     };
   },
@@ -47,6 +53,9 @@ export default {
         .patch(`/users/${this.editUserParams.id}`, this.editUserParams)
         .then((response) => {
           console.log(response.data);
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
         });
     },
     destroyUser: function () {
