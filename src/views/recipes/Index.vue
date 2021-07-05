@@ -1,10 +1,9 @@
 <template>
   <div class="recipes-index">
-    <h2>Your Recipe Box</h2>
+    <h2>Save Some Recipes!</h2>
     <div v-for="recipe in recipes" v-bind:key="recipe.id">
       <h4>{{ recipe.title }}</h4>
       <img :src="recipe.image_url" alt="" />
-      <div v-for="ingredient in ingredients" v-bind:key="ingredient.id"></div>
       <p>Used Ingredients: {{ recipe.used_ingredients }}</p>
       <br />
       <button v-on:click="recipesShow(recipe)">More Info</button>
