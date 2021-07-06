@@ -14,7 +14,7 @@
       <p>{{ instruction }}</p>
     </div>
     <br /><br />
-    <button v-on:click="favoriteNew()">Add to Favorites</button>
+    <button v-on:click="favoriteNew()">Add to Favorites</button><br /><br />
   </div>
 </template>
 

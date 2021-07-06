@@ -103,7 +103,7 @@ export default {
       axios
         .patch(`/ingredients/${ingredient.id}`, ingredient)
         .then((response) => {
-          this.ingredients = response.data;
+          this.ingredients.unshift();
           console.log(response.data);
         });
     },
@@ -111,7 +111,7 @@ export default {
       axios
         .post("/ingredients", this.newIngredientParams)
         .then((response) => {
-          this.ingredients = response.data;
+          this.ingredients.unshift(response.data);
           console.log(response.data);
         })
         .catch((error) => {
@@ -125,9 +125,6 @@ export default {
           console.log(response.data);
           this.ingredients = response.data;
         });
-    },
-    addToCookWith: function () {
-      console.log(this.cookWith);
     },
   },
 };
