@@ -1,7 +1,14 @@
 <template>
   <div class="recipes-index">
     <h2>Save Some Recipes!</h2>
-    <div v-for="recipe in recipes" v-bind:key="recipe.id">
+    <p>Ingredients You're Searching for Recipes With:</p>
+    <div
+      v-for="ingredient in recipes.ingredient_names"
+      v-bind:key="ingredient.id"
+    >
+      <p>{{ ingredient }}</p>
+    </div>
+    <div v-for="recipe in recipes.recipes" v-bind:key="recipe.id">
       <h4>{{ recipe.title }}</h4>
       <img :src="recipe.image_url" alt="" />
       <p>Used Ingredients:</p>

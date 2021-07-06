@@ -3,7 +3,7 @@
     <h2>Add Some Ingredients To Your Pantry!</h2>
     <form v-on:submit.prevent="createIngredient()">
       New Ingredient:
-      <input type="text" v-model="newIngredientParams.name" /><br /><br />
+      <input type="text" v-model="newIngredientParams.name" />
       <ul>
         <li v-for="error in errors" v-bind:key="error">
           {{ error }}
@@ -31,9 +31,10 @@
     <h3>Your Current Ingredients</h3>
     <div>
       <div v-for="ingredient in ingredients" v-bind:key="ingredient.id">
-        <p>Name: {{ ingredient.name }}</p>
-        <p>Have:</p>
+        <h4>Name:</h4>
+        <p>{{ ingredient.name }}</p>
         <form v-on:submit.prevent="updateIngredient(ingredient)">
+          <h4>Have:</h4>
           <input
             type="radio"
             id="updateHaveTrue"
@@ -49,31 +50,31 @@
             v-model="ingredient.have"
             v-bind:value="false"
           />
-          <label for="updateHaveFalse">No</label><br /><br />
+          <label for="updateHaveFalse">No</label><br />
+          <h4>Cook With:</h4>
           <input
             type="radio"
-            id="updateHaveTrue"
-            name="updateHave"
-            v-model="ingredient.have"
+            id="updateCookWithTrue"
+            name="updateCookWith"
+            v-model="ingredient.cook_with"
             v-bind:value="true"
           />
-          <label for="updateHaveTrue">Yes</label>
+          <label for="updateCookWithTrue">Yes</label>
           <input
             type="radio"
-            id="updateHaveFalse"
-            name="updateHave"
-            v-model="ingredient.have"
+            id="updateCookWithFalse"
+            name="updateCookWith"
+            v-model="ingredient.cook_with"
             v-bind:value="false"
           />
-          <label for="updateHaveFalse">No</label><br /><br />
+          <label for="updateCookWithFalse">No</label><br /><br />
           <input type="submit" value="Submit" class="btn btn-primary" />
         </form>
-        Search for recipes with this ingredient:
+        <br />
         <button v-on:click="deleteIngredient(ingredient)">
           Delete Ingredient
         </button>
       </div>
-      <button v-on:click="updateIngredient()">Cook With</button>
     </div>
   </div>
 </template>
