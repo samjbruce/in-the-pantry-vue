@@ -83,6 +83,7 @@
 
 <script>
 import axios from "axios";
+
 export default {
   data: function () {
     return {
@@ -120,7 +121,7 @@ export default {
     },
     deleteIngredient: function (ingredient) {
       axios
-        .delete(`ingredients/${ingredient.id}`, ingredient)
+        .delete(`/ingredients/${ingredient.id}`, ingredient)
         .then((response) => {
           console.log(response.data);
           this.ingredients = response.data;

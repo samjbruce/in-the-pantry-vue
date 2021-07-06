@@ -1,7 +1,12 @@
 <template>
   <div class="home">
     <h1>In the Pantry</h1>
-    <p>Login or Signup to get started!</p>
+    <p>
+      A website for home cooks where you can save ingredients based off of what
+      you currently have on hand in order to find and save recipes and make
+      grocery shopping lists.
+    </p>
+    <h4>Login or Signup to get started!</h4>
     <button v-on:click="loginPush()">Login</button><br /><br />
     <button v-on:click="signupPush()">Signup</button>
   </div>
