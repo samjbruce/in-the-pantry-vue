@@ -31,10 +31,9 @@
     <h3>Your Current Ingredients</h3>
     <div>
       <div v-for="ingredient in ingredients" v-bind:key="ingredient.id">
-        <h4>Name:</h4>
-        <p>{{ ingredient.name }}</p>
+        <h4>{{ ingredient.name }}</h4>
         <form v-on:submit.prevent="updateIngredient(ingredient)">
-          <h4>Have:</h4>
+          <label>Have:</label>
           <input
             type="radio"
             id="updateHaveTrue"
@@ -50,8 +49,8 @@
             v-model="ingredient.have"
             v-bind:value="false"
           />
-          <label for="updateHaveFalse">No</label><br />
-          <h4>Cook With:</h4>
+          <label for="updateHaveFalse">No</label><br /><br />
+          <label>Cook With:</label>
           <input
             type="radio"
             id="updateCookWithTrue"
@@ -90,7 +89,6 @@ export default {
       ingredients: [],
       errors: [],
       newIngredientParams: {},
-      cookWith: [],
     };
   },
   created: function () {

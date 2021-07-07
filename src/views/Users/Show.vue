@@ -1,8 +1,6 @@
 <template>
   <div class="users-show">
-    <h1>User Show Page</h1>
-    <h3>{{ user.name }}</h3>
-    <p>Email: {{ user.email }}</p>
+    <h2>Your Profile</h2>
     <br />
     <img :src="user.image_url" />
     <div>
@@ -12,13 +10,12 @@
             {{ error }}
           </li>
         </ul>
-        <h2>Update Profile</h2>
         <label>Name: </label>
         <input type="text" v-model="editUserParams.name" /><br />
         <label>Email: </label>
         <input type="text" v-model="editUserParams.email" /><br />
         <label>Image URL: </label>
-        <input type="text" v-model="editUserParams.image_url" /><br />
+        <input type="text" v-model="editUserParams.image_url" /><br /><br />
         <input type="submit" class="btn btn-primary" value="Submit" />
       </form>
     </div>

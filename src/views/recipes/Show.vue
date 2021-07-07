@@ -1,5 +1,6 @@
 <template>
   <div class="recipes-show">
+    <button v-on:click="previousScreen()">Back</button>
     <h1>Recipe Show</h1>
     <h3>{{ recipe.title }}</h3>
     <img :src="recipe.image" alt="" />
@@ -14,7 +15,11 @@
       <p>{{ instruction }}</p>
     </div>
     <br /><br />
-    <button v-on:click="favoriteNew()">Add to Favorites</button><br /><br />
+    <span v-if="recipe.recipe_id == favoritedRecipeId"> </span>
+    <span v-else>
+      <button v-on:click="favoriteNew()">Add to Favorites</button>
+    </span>
+    <br /><br />
   </div>
 </template>
 
@@ -27,6 +32,7 @@ export default {
   data: function () {
     return {
       recipe: {},
+      favoritedRecipeId: "",
       newFavoriteParams: {},
     };
   },
@@ -34,6 +40,7 @@ export default {
     axios.get(`/recipes/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
       this.recipe = response.data;
+      this.favoritedRecipeId = localStorage.getItem("recipe_id");
     });
   },
   methods: {
@@ -43,6 +50,16 @@ export default {
         console.log(response.data);
         this.$router.push("/favorites");
       });
+    },
+    favorited: function () {
+      if (this.favoritedRecipeId == this.recipe.recipe_id) {
+        console.log("True");
+      }
+      console.log(this.favoritedRecipeId);
+      console.log(this.recipe.recipe_id);
+    },
+    previousScreen: function () {
+      this.$router.go(-1);
     },
   },
 };

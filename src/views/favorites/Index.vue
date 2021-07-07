@@ -7,7 +7,7 @@
       <img :src="favorite.recipe.image_url" alt="" /><br /><br />
       <button v-on:click="deleteFavorite(favorite)">Delete Favorite</button
       ><br />
-      <button v-on:click="recipesShow(favorite)">More Info</button>
+      <button v-on:click="recipeShow(favorite)">More Info</button>
     </div>
   </div>
 </template>
@@ -30,12 +30,19 @@ export default {
   },
   methods: {
     deleteFavorite: function (favorite) {
-      axios.delete(`favorites/${favorite.id}`, favorite).then((response) => {
-        console.log(response.data);
-      });
+      if (
+        confirm(
+          "Are you sure you would like to remove this recipe from favorites?"
+        )
+      )
+        axios.delete(`favorites/${favorite.id}`, favorite).then((response) => {
+          console.log(response.data);
+          this.favorites = response.data;
+        });
     },
-    recipesShow: function (favorite) {
+    recipeShow: function (favorite) {
       this.$router.push(`/recipes/${favorite.recipe.recipe_id}`);
+      localStorage.setItem("recipe_id", favorite.recipe.recipe_id);
     },
   },
 };

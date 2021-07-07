@@ -1,7 +1,10 @@
 <template>
   <div class="signup">
     <form v-on:submit.prevent="submit()">
-      <h1>Signup</h1>
+      <p>
+        Welcome to In the Pantry! Add and pick which ingredients you want to
+        cook with and we will handle the rest! To get started, sign up below.
+      </p>
       <ul>
         <li class="text-danger" v-for="error in errors" v-bind:key="error">
           {{ error }}
@@ -35,7 +38,7 @@
           v-model="newUserParams.password_confirmation"
         />
       </div>
-      <input type="submit" class="btn btn-primary" value="Submit" />
+      <input type="submit" class="btn btn-primary" value="Next" />
     </form>
   </div>
 </template>

@@ -4,25 +4,7 @@
     <div v-for="ingredient in ingredients" v-bind:key="ingredient.id">
       <h4>{{ ingredient.name }}</h4>
       <form v-on:submit.prevent="updateIngredient(ingredient)">
-        <h4>Purchased:</h4>
-        <input
-          type="radio"
-          id="updateHaveFalse"
-          name="updateHave"
-          v-model="ingredient.have"
-          v-bind:value="false"
-        />
-        <label for="updateHaveFalse">Yes</label>
-        <input
-          type="radio"
-          id="updateHaveTrue"
-          name="updateHave"
-          v-model="ingredient.have"
-          v-bind:value="true"
-        />
-        <label for="updateHaveTrue">No</label><br />
-
-        <input type="submit" value="Submit" class="btn btn-primary" />
+        <button :v-model="ingredient.have">Purchased</button>
       </form>
       <br />
     </div>
@@ -64,11 +46,14 @@ export default {
         console.log(this.shoppingIngredients);
     },
     updateIngredient: function (ingredient) {
-      axios
-        .patch(`/ingredients/${ingredient.id}`, ingredient)
-        .then((response) => {
-          console.log(response.data);
-        });
+      axios.patch(`/ingredients/${ingredient.id}`, ingredient).then(() => {
+        console.log(this.tempIngredients);
+        for (var i = 0; i < this.ingredients.length; i++) {
+          if (this.ingredients[i] === ingredient) {
+            this.ingredients.splice(i, 1);
+          }
+        }
+      });
     },
   },
 };
