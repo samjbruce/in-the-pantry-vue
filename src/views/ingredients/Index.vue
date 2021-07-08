@@ -39,7 +39,7 @@
             id="updateHaveTrue"
             name="updateHave"
             v-model="ingredient.have"
-            value="1"
+            value="true"
           />
           <label for="updateHaveTrue">Yes</label>
           <input
@@ -47,17 +47,16 @@
             id="updateHaveFalse"
             name="updateHave"
             v-model="ingredient.have"
-            value="2"
+            value="false"
           />
           <label for="updateHaveFalse">No</label><br /><br />
-
           <label>Cook With:</label>
           <input
             type="radio"
             id="updateCookWithTrue"
             name="updateCookWith"
             v-model="ingredient.cook_with"
-            value="1"
+            value="true"
           />
           <label for="updateCookWithTrue">Yes</label>
           <input
@@ -65,7 +64,7 @@
             id="updateCookWithFalse"
             name="updateCookWith"
             v-model="ingredient.cook_with"
-            value="2"
+            value="false"
           />
           <label for="updateCookWithFalse">No</label><br /><br />
           <input type="submit" value="Submit" class="btn btn-primary" />

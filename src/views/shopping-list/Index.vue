@@ -4,7 +4,23 @@
     <div v-for="ingredient in ingredients" v-bind:key="ingredient.id">
       <h4>{{ ingredient.name }}</h4>
       <form v-on:submit.prevent="updateIngredient(ingredient)">
-        <button :v-model="ingredient.have">Purchased</button>
+        <input
+          type="radio"
+          id="updateHaveTrue"
+          name="updateHave"
+          v-model="ingredient.have"
+          value="true"
+        />
+        <label for="updateHaveTrue">Yes</label>
+        <input
+          type="radio"
+          id="updateHaveFalse"
+          name="updateHave"
+          v-model="ingredient.have"
+          value="false"
+        />
+        <label for="updateHaveFalse">No</label><br /><br />
+        <input type="submit" value="Purchased" class="btn btn-primary" />
       </form>
       <br />
     </div>
