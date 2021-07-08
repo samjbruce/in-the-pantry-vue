@@ -20,6 +20,15 @@
       <button v-on:click="favoriteNew()">Add to Favorites</button>
     </span>
     <br /><br />
+    <h3>Similar Recipes:</h3>
+    <br />
+    <div v-for="similarRecipe in similarRecipes" v-bind:key="similarRecipe.id">
+      <h4>{{ similarRecipe.title }}</h4>
+      <img :src="similarRecipe.image_url" alt="" />
+      <br />
+      <button v-on:click="recipesShow(recipe)">More Info</button>
+      <br /><br />
+    </div>
   </div>
 </template>
 
@@ -31,6 +40,8 @@ import axios from "axios";
 export default {
   data: function () {
     return {
+      similarRecipes: [],
+      similarRecipesSplice: [],
       recipe: {},
       favoritedRecipeId: "",
       newFavoriteParams: {},
@@ -41,7 +52,12 @@ export default {
       console.log(response.data);
       this.recipe = response.data;
       this.favoritedRecipeId = localStorage.getItem("recipe_id");
-    });
+    }),
+      axios.get("/recipes").then((response) => {
+        this.similarRecipes = response.data["similar_recipes"];
+        this.similarRecipes.splice(0, 1);
+        console.log(this.similarRecipes);
+      });
   },
   methods: {
     favoriteNew: function () {
