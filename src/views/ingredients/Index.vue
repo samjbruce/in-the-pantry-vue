@@ -39,7 +39,7 @@
             id="updateHaveTrue"
             name="updateHave"
             v-model="ingredient.have"
-            v-bind:value="true"
+            value="1"
           />
           <label for="updateHaveTrue">Yes</label>
           <input
@@ -47,16 +47,17 @@
             id="updateHaveFalse"
             name="updateHave"
             v-model="ingredient.have"
-            v-bind:value="false"
+            value="2"
           />
           <label for="updateHaveFalse">No</label><br /><br />
+
           <label>Cook With:</label>
           <input
             type="radio"
             id="updateCookWithTrue"
             name="updateCookWith"
             v-model="ingredient.cook_with"
-            v-bind:value="true"
+            value="1"
           />
           <label for="updateCookWithTrue">Yes</label>
           <input
@@ -64,7 +65,7 @@
             id="updateCookWithFalse"
             name="updateCookWith"
             v-model="ingredient.cook_with"
-            v-bind:value="false"
+            value="2"
           />
           <label for="updateCookWithFalse">No</label><br /><br />
           <input type="submit" value="Submit" class="btn btn-primary" />
@@ -89,6 +90,7 @@ export default {
       ingredients: [],
       errors: [],
       newIngredientParams: {},
+      ingredientHaveValue: {},
     };
   },
   created: function () {
@@ -124,6 +126,10 @@ export default {
           console.log(response.data);
           this.ingredients = response.data;
         });
+    },
+    createValue: function () {
+      this.ingredientHaveValue = "true";
+      console.log(this.ingredientHaveValue);
     },
   },
 };
