@@ -136,12 +136,6 @@ export default {
           this.ingredients = response.data;
         });
     },
-    resetCookWith: function () {
-      this.ingredients.forEach((ingredient) => {
-        ingredient.cook_with = "false";
-      });
-      console.log(this.ingredients);
-    },
   },
 };
 </script>
