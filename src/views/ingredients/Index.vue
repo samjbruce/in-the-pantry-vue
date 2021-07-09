@@ -30,7 +30,11 @@
     </form>
     <h3>Your Current Ingredients</h3>
     <div>
-      <div v-for="ingredient in ingredients" v-bind:key="ingredient.id">
+      <input type="text" v-model="searchTerm" placeholder="Search" />
+      <div
+        v-for="ingredient in filterBy(ingredients, searchTerm, 'name')"
+        v-bind:key="ingredient.id"
+      >
         <h4>{{ ingredient.name }}</h4>
         <form v-on:submit.prevent="updateIngredient(ingredient)">
           <label>Have:</label>
@@ -74,6 +78,7 @@
           Delete Ingredient
         </button>
       </div>
+      <br /><br />
       <button v-on:click="resetCookWith()">
         Reset Ingredients to Cook With
       </button>
@@ -85,13 +90,16 @@
 
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       ingredients: [],
       errors: [],
       newIngredientParams: {},
+      searchTerm: "",
     };
   },
   created: function () {
