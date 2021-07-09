@@ -20,6 +20,11 @@
       <button v-on:click="favoriteNew()">Add to Favorites</button>
     </span>
     <br /><br />
+    <div v-for="similarRecipe in similarRecipes" v-bind:key="similarRecipe.id">
+      <p>{{ similarRecipe.title }}</p>
+      <p>Prep Time: {{ similarRecipe.readyInMinutes }}</p>
+      <a :href="`/recipes/${similarRecipe.id}`">More Info</a>
+    </div>
   </div>
 </template>
 
@@ -31,16 +36,17 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      similarRecipes: [],
       recipe: {},
       favoritedRecipeId: "",
       newFavoriteParams: {},
+      similarRecipes: {},
     };
   },
   created: function () {
     axios.get(`/recipes/${this.$route.params.id}`).then((response) => {
       console.log(response.data);
-      this.recipe = response.data;
+      this.recipe = response.data.formatted_recipe;
+      this.similarRecipes = response.data.similar_recipes;
       this.favoritedRecipeId = localStorage.getItem("recipe_id");
     });
   },

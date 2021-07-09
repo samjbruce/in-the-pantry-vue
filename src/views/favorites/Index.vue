@@ -37,7 +37,8 @@ export default {
       )
         axios.delete(`favorites/${favorite.id}`, favorite).then((response) => {
           console.log(response.data);
-          this.favorites = response.data;
+          var index = this.favorites.indexOf(favorite);
+          this.favorites.splice(index, 1);
         });
     },
     recipeShow: function (favorite) {
