@@ -22,7 +22,7 @@
     <br /><br />
     <div v-for="similarRecipe in similarRecipes" v-bind:key="similarRecipe.id">
       <p>{{ similarRecipe.title }}</p>
-      <p>Prep Time: {{ similarRecipe.readyInMinutes }}</p>
+      <p>Prep Time: {{ similarRecipe.readyInMinutes }} minutes</p>
       <a :href="`/recipes/${similarRecipe.id}`">More Info</a>
     </div>
   </div>

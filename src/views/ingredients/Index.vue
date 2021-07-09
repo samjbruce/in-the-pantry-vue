@@ -14,7 +14,7 @@
     <h3>Your Current Ingredients</h3>
     <router-link :to="`/recipes?query=${queryStringIngredients}`"
       >Cook With These</router-link
-    >
+    ><br /><br />
     <div>
       <input type="text" v-model="searchTerm" placeholder="Search" />
       <div
@@ -22,63 +22,27 @@
         v-bind:key="ingredient.id"
       >
         <h4>{{ ingredient.name }}</h4>
-        <!-- <form v-on:submit.prevent="updateIngredient(ingredient)"> -->
         <label>Have:</label>
         <input
           type="checkbox"
           v-model="ingredient.have"
           v-on:click="updateIngredient(ingredient)"
           id=""
-        />{{ ingredient.have }}
-        <!-- <input
-            type="radio"
-            id="updateHaveTrue"
-            name="updateHave"
-            v-model="ingredient.have"
-            value="true"
-          />
-          <label for="updateHaveTrue">Yes</label>
-          <input
-            type="radio"
-            id="updateHaveFalse"
-            name="updateHave"
-            v-model="ingredient.have"
-            value="false"
-          /> -->
-        <!-- <label for="updateHaveFalse">No</label><br /><br /> -->
+        />
+        <br />
+        <br />
         <label>Cook With:</label>
         <input
           type="checkbox"
           v-on:click="updateQueryString(ingredient)"
           v-model="ingredient.cookWith"
         />
-        <!-- <input
-          type="radio"
-          id="updateCookWithTrue"
-          name="updateCookWith"
-          v-model="ingredient.cook_with"
-          value="true"
-        />
-        <label for="updateCookWithTrue">Yes</label>
-        <input
-          type="radio"
-          id="updateCookWithFalse"
-          name="updateCookWith"
-          v-model="ingredient.cook_with"
-          value="false"
-        />
-        <label for="updateCookWithFalse">No</label><br /><br /> -->
-        <!-- <input type="submit" value="Submit" class="btn btn-primary" /> -->
-        <!-- </form> -->
-        <br />
+        <br /><br />
         <button v-on:click="deleteIngredient(ingredient)">
           Delete Ingredient
         </button>
       </div>
       <br /><br />
-      <button v-on:click="resetCookWith()">
-        Reset Ingredients to Cook With
-      </button>
     </div>
   </div>
 </template>
@@ -131,8 +95,9 @@ export default {
       axios
         .delete(`/ingredients/${ingredient.id}`, ingredient)
         .then((response) => {
-          console.log(response.data);
-          this.ingredients = response.data;
+          console.log("ingredient destroyed", response);
+          var index = this.ingredients.indexOf(ingredient);
+          this.ingredients.splice(index, 1);
         });
     },
     updateQueryString: function (ingredient) {

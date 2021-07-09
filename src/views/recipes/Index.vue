@@ -2,7 +2,12 @@
   <div class="recipes-index">
     <h2>Save Some Recipes!</h2>
     <p>Ingredients You're Searching for Recipes With:</p>
-    <p>{{ $route.query.query.split(",") }}</p>
+    <div
+      v-for="queryIngredient in queryIngredients"
+      v-bind:key="queryIngredient.id"
+    >
+      <p>{{ queryIngredient }}</p>
+    </div>
     <div v-for="recipe in recipes.recipes" v-bind:key="recipe.id">
       <h4>{{ recipe.title }}</h4>
       <img :src="recipe.image_url" alt="" />
@@ -31,10 +36,12 @@ export default {
       recipes: [],
       ingredients: [],
       newFavoriteParams: {},
+      queryIngredients: [],
     };
   },
   created: function () {
     var queryStringIngredients = this.$route.query.query;
+    this.queryIngredients = this.$route.query.query.split(",");
     console.log("recipesIndex", queryStringIngredients);
     axios.get(`/recipes?query=${queryStringIngredients}`).then((response) => {
       console.log(response.data);
