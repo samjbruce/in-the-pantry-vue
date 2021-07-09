@@ -21,6 +21,7 @@
       <br />
       <button v-on:click="recipesShow(recipe)">More Info</button>
       <br /><br />
+      <button v-on:click="favoriteNew(recipe)">Bookmark</button>
     </div>
   </div>
 </template>
@@ -34,6 +35,7 @@ export default {
     return {
       recipes: [],
       ingredients: [],
+      newFavoriteParams: {},
     };
   },
   created: function () {
@@ -45,6 +47,13 @@ export default {
   methods: {
     recipesShow: function (recipe) {
       this.$router.push(`/recipes/${recipe.recipe_id}`);
+    },
+    favoriteNew: function (recipe) {
+      this.newFavoriteParams.spoonacular_api_id = recipe.recipe_id;
+      axios.post("/favorites", this.newFavoriteParams).then((response) => {
+        console.log(response.data);
+        this.$router.push("/favorites");
+      });
     },
   },
 };

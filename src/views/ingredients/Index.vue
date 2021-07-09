@@ -74,6 +74,9 @@
           Delete Ingredient
         </button>
       </div>
+      <button v-on:click="resetCookWith()">
+        Reset Ingredients to Cook With
+      </button>
     </div>
   </div>
 </template>
@@ -89,7 +92,6 @@ export default {
       ingredients: [],
       errors: [],
       newIngredientParams: {},
-      ingredientHaveValue: {},
     };
   },
   created: function () {
@@ -126,9 +128,11 @@ export default {
           this.ingredients = response.data;
         });
     },
-    createValue: function () {
-      this.ingredientHaveValue = "true";
-      console.log(this.ingredientHaveValue);
+    resetCookWith: function () {
+      this.ingredients.forEach((ingredient) => {
+        ingredient.cook_with = "false";
+      });
+      console.log(this.ingredients);
     },
   },
 };

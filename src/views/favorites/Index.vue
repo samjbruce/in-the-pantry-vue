@@ -6,7 +6,7 @@
       <p>Prep Time: {{ favorite.recipe.prep_time_minutes }}</p>
       <img :src="favorite.recipe.image_url" alt="" /><br /><br />
       <button v-on:click="deleteFavorite(favorite)">Delete Favorite</button
-      ><br />
+      ><br /><br />
       <button v-on:click="recipeShow(favorite)">More Info</button>
     </div>
   </div>
