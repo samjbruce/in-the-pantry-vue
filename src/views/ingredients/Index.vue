@@ -1,49 +1,88 @@
 <template>
   <div class="ingredients-index">
-    <h2>Add Some Ingredients To Your Pantry!</h2>
-    <form v-on:submit.prevent="createIngredient()">
-      New Ingredient:
-      <input type="text" v-model="newIngredientParams.name" />
-      <ul>
-        <li v-for="error in errors" v-bind:key="error">
-          {{ error }}
-        </li>
-      </ul>
-      <input type="submit" value="Submit" class="btn btn-primary" />
-    </form>
-    <h3>Your Current Ingredients</h3>
-    <router-link :to="`/recipes?query=${queryStringIngredients}`"
-      >Cook With These</router-link
-    ><br /><br />
-    <div>
-      <input type="text" v-model="searchTerm" placeholder="Search" />
-      <div
-        v-for="ingredient in filterBy(ingredients, searchTerm, 'name')"
-        v-bind:key="ingredient.id"
-      >
-        <h4>{{ ingredient.name }}</h4>
-        <label>Have:</label>
-        <input
-          type="checkbox"
-          v-model="ingredient.have"
-          v-on:click="updateIngredient(ingredient)"
-          id=""
-        />
-        <br />
-        <br />
-        <label>Cook With:</label>
-        <input
-          type="checkbox"
-          v-on:click="updateQueryString(ingredient)"
-          v-model="ingredient.cookWith"
-        />
-        <br /><br />
-        <button v-on:click="deleteIngredient(ingredient)">
-          Delete Ingredient
-        </button>
+    <div class="head-title">
+      <div class="container">
+        <div id="search-2" class="widget widget_search">
+          <div class="widget-title-outer">
+            <h3 class="page-title">Add Ingredient</h3>
+          </div>
+          <div class="searchform">
+            <form v-on:submit.prevent="createIngredient()">
+              <input
+                v-model="newIngredientParams.name"
+                type="text"
+                class="txt"
+                name="s"
+                placeholder="Type Ingredient Name"
+              />
+              <ul>
+                <li v-for="error in errors" v-bind:key="error">
+                  {{ error }}
+                </li>
+              </ul>
+              <input type="submit" value="submit" class="btn btn-sm" />
+            </form>
+          </div>
+          <!-- end searchform -->
+        </div>
+        <!-- end search widget -->
       </div>
-      <br /><br />
+      <!-- end container -->
     </div>
+    <!-- end head-title -->
+    <div id="main">
+      <router-link
+        class="col-6"
+        :to="`/recipes?query=${queryStringIngredients}`"
+        >Cook With These</router-link
+      >
+      <div class="container">
+        <div class="recipe-index card-columns">
+          <div class="card">
+            <div class="index-box">
+              <div class="index-head">
+                <h3>All</h3>
+              </div>
+              <div class="index-list">
+                <ul>
+                  <li
+                    v-for="ingredient in ingredients"
+                    v-bind:key="ingredient.id"
+                  >
+                    <p>
+                      {{ ingredient.name }} |<label> Have: </label>
+                      <input
+                        type="checkbox"
+                        v-model="ingredient.have"
+                        v-on:click="updateIngredient(ingredient)"
+                        id=""
+                      />
+                      <label> | Cook With:</label>
+                      <input
+                        type="checkbox"
+                        v-on:click="updateQueryString(ingredient)"
+                        v-model="ingredient.cookWith"
+                      />
+                      |
+                      <button
+                        v-on:click="deleteIngredient(ingredient)"
+                        class="fas fa-trash"
+                      ></button>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <!-- end index-list -->
+            </div>
+            <!-- end index-box -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end card colum -->
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end main -->
   </div>
 </template>
 
@@ -51,16 +90,13 @@
 
 <script>
 import axios from "axios";
-import Vue2Filters from "vue2-filters";
 
 export default {
-  mixins: [Vue2Filters.mixin],
   data: function () {
     return {
       ingredients: [],
       errors: [],
       newIngredientParams: {},
-      searchTerm: "",
       queryStringIngredients: "",
     };
   },

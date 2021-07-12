@@ -1,36 +1,51 @@
 <template>
   <div class="shopping-list-index">
-    <h2>Your Grocery Shopping List</h2>
-    <div v-for="ingredient in ingredients" v-bind:key="ingredient.id">
-      <h4>{{ ingredient.name }}</h4>
-      <label>Purchased:</label>
-      <input
-        type="checkbox"
-        v-model="ingredient.have"
-        v-on:click="updateIngredient(ingredient)"
-        id=""
-      />
-      <!-- <form v-on:submit.prevent="updateIngredient(ingredient)">
-        <input
-          type="radio"
-          id="updateHaveTrue"
-          name="updateHave"
-          v-model="ingredient.have"
-          value="true"
-        />
-        <label for="updateHaveTrue">Yes</label>
-        <input
-          type="radio"
-          id="updateHaveFalse"
-          name="updateHave"
-          v-model="ingredient.have"
-          value="false"
-        />
-        <label for="updateHaveFalse">No</label><br /><br />
-        <input type="submit" value="Purchased" class="btn btn-primary" />
-      </form> -->
-      <br />
+    <div class="head-title">
+      <div class="container">
+        <div class="widget-title-outer">
+          <h3 class="page-title">Your Grocery Shopping List</h3>
+        </div>
+      </div>
+      <!-- end container -->
     </div>
+    <!-- end head-title -->
+    <div id="main">
+      <div class="container">
+        <div class="recipe-index card-columns">
+          <div class="card">
+            <div class="index-box">
+              <div class="index-head">
+                <h3>All</h3>
+              </div>
+              <div class="index-list">
+                <ul>
+                  <li
+                    v-for="ingredient in ingredients"
+                    v-bind:key="ingredient.id"
+                  >
+                    <p>
+                      {{ ingredient.name }} |<label>Purchased:</label>
+                      <input
+                        type="checkbox"
+                        v-model="ingredient.have"
+                        v-on:click="updateIngredient(ingredient)"
+                        id=""
+                      />
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <!-- end index-list -->
+            </div>
+            <!-- end index-box -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end card colum -->
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end main -->
   </div>
 </template>
 
