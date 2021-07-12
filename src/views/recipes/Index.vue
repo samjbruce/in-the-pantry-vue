@@ -1,28 +1,67 @@
 <template>
   <div class="recipes-index">
-    <h2>Save Some Recipes!</h2>
-    <p>Ingredients You're Searching for Recipes With:</p>
-    <div
-      v-for="queryIngredient in queryIngredients"
-      v-bind:key="queryIngredient.id"
-    >
-      <p>{{ queryIngredient }}</p>
-    </div>
-    <div v-for="recipe in recipes.recipes" v-bind:key="recipe.id">
-      <h4>{{ recipe.title }}</h4>
-      <img :src="recipe.image_url" alt="" />
-      <p>Used Ingredients:</p>
-      <div
-        v-for="ingredient in recipe.used_ingredients"
-        v-bind:key="ingredient.id"
-      >
-        <p>{{ ingredient }}</p>
+    <div class="head-title">
+      <div class="container">
+        <h4>You're searching for recipes with:</h4>
+        <div
+          v-for="queryIngredient in queryIngredients"
+          v-bind:key="queryIngredient.id"
+        >
+          <p>{{ queryIngredient }}</p>
+        </div>
       </div>
-      <br />
-      <button v-on:click="recipesShow(recipe)">More Info</button>
-      <br /><br />
-      <button v-on:click="favoriteNew(recipe)">Bookmark</button>
+      <!-- end container -->
     </div>
+    <!-- end head-title -->
+    <div id="main">
+      <div class="container">
+        <div id="primary" class="content-area fullwidth">
+          <div id="content" class="site-content">
+            <div class="row">
+              <div
+                class="col-6 col-md-3"
+                v-for="recipe in recipes.recipes"
+                v-bind:key="recipe.id"
+              >
+                <div class="recipe-thumb">
+                  <img :src="recipe.image_url" alt="Recipe Image" />
+                  <a href="#" class="bookmarker"
+                    ><i class="fas fa-bookmark"></i
+                  ></a>
+                  <a :href="`/recipes/${recipe.recipe_id}`" class="view-recipe"
+                    >VIEW RECIPE</a
+                  >
+                </div>
+                <div class="recipe-desc">
+                  <h2 class="recipe-title">
+                    <a :href="`/recipes/${recipe.recipe_id}`">{{
+                      recipe.title
+                    }}</a>
+                  </h2>
+                  <p>
+                    <em
+                      ><div
+                        v-for="ingredient in recipe.used_ingredients"
+                        v-bind:key="ingredient.id"
+                      >
+                        <p>{{ ingredient }}</p>
+                      </div></em
+                    >
+                  </p>
+                </div>
+                <!-- end recipe-desc -->
+              </div>
+              <!-- end col -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- end content -->
+        </div>
+        <!-- end primary -->
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end main -->
   </div>
 </template>
 

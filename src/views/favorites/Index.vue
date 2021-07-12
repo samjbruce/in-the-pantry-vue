@@ -19,6 +19,9 @@
               >
                 <div class="recipe-thumb">
                   <img :src="favorite.recipe.image_url" alt="Recipe Image" />
+                  <a v-on:click="deleteFavorite(favorite)" class="bookmarker"
+                    ><i class="fas fa-trash"></i
+                  ></a>
                   <a v-on:click="recipeShow(favorite)" class="view-recipe"
                     >VIEW RECIPE</a
                   >
