@@ -1,26 +1,68 @@
 <template>
   <div class="users-show">
-    <h2>Your Profile</h2>
-    <br />
-    <img :src="user.image_url" />
-    <div>
-      <form v-on:submit.prevent="updateUser()">
-        <ul>
-          <li v-for="error in errors" v-bind:key="error">
-            {{ error }}
-          </li>
-        </ul>
-        <label>Name: </label>
-        <input type="text" v-model="editUserParams.name" /><br />
-        <label>Email: </label>
-        <input type="text" v-model="editUserParams.email" /><br />
-        <label>Image URL: </label>
-        <input type="text" v-model="editUserParams.image_url" /><br /><br />
-        <input type="submit" class="btn btn-primary" value="Submit" />
-      </form>
+    <div class="head-title">
+      <div class="container">
+        <h2 class="page-title">Your Account</h2>
+      </div>
+      <!-- end container -->
     </div>
-    <br />
-    <button v-on:click="destroyUser">Delete Profile</button>
+    <!-- end head-title -->
+    <div id="main">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md">
+            <div class="acc-box equal">
+              <h2>Login</h2>
+              <p>
+                <em>Update your account information below.</em>
+              </p>
+              <form v-on:submit.prevent="updateUser()">
+                <ul>
+                  <li
+                    class="text-danger"
+                    v-for="error in errors"
+                    v-bind:key="error"
+                  >
+                    {{ error }}
+                  </li>
+                </ul>
+                <div class="form-group">
+                  <label for="Name">Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Name"
+                    placeholder="Enter email"
+                    v-model="editUserParams.name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="InputEmailAcc1">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="InputEmailAcc1"
+                    placeholder="Enter email"
+                    v-model="editUserParams.email"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button v-on:click="destroyUser" class="btn btn-primary">
+                  Delete Profile
+                </button>
+              </form>
+            </div>
+            <!-- end acc-box -->
+          </div>
+          <!-- end col -->
+        </div>
+      </div>
+      <!-- end container -->
+    </div>
+    <!-- end main -->
+
+    <label>Image URL: </label>
+    <input type="text" v-model="editUserParams.image_url" /><br /><br />
   </div>
 </template>
 

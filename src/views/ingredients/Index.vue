@@ -1,43 +1,131 @@
 <template>
   <div class="ingredients-index">
-    <div class="head-title">
-      <div class="container">
-        <div id="search-2" class="widget widget_search">
-          <div class="widget-title-outer">
-            <h3 class="page-title">Add Ingredient</h3>
+    <div id="main">
+      <div class="container" style="padding: 40px">
+        <div class="row">
+          <div class="col-12 col-md-12">
+            <div class="acc-box equal" style="padding: 20px">
+              <h2>Add Some Ingredients to Your List!</h2>
+              <form v-on:submit.prevent="createIngredient()">
+                <ul>
+                  <li
+                    class="text-danger"
+                    v-for="error in errors"
+                    v-bind:key="error"
+                  >
+                    {{ error }}
+                  </li>
+                </ul>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="InputEmailAcc1"
+                    placeholder="Enter one ingredient"
+                    v-model="newIngredientParams.name"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+              </form>
+            </div>
+            <!-- end acc-box -->
           </div>
-          <div class="searchform">
-            <form v-on:submit.prevent="createIngredient()">
-              <input
-                v-model="newIngredientParams.name"
-                type="text"
-                class="txt"
-                name="s"
-                placeholder="Type Ingredient Name"
-              />
-              <ul>
-                <li v-for="error in errors" v-bind:key="error">
-                  {{ error }}
-                </li>
-              </ul>
-              <input type="submit" value="submit" class="btn btn-sm" />
-            </form>
-          </div>
-          <!-- end searchform -->
+          <!-- end col -->
         </div>
-        <!-- end search widget -->
       </div>
       <!-- end container -->
     </div>
-    <!-- end head-title -->
+    <!-- end main -->
     <div id="main">
-      <router-link
-        class="col-6"
-        :to="`/recipes?query=${queryStringIngredients}`"
-        >Cook With These</router-link
-      >
+      <div class="centered" style="padding-bottom: 50px">
+        <a
+          :href="`/recipes?query=${queryStringIngredients}`"
+          class="btn btn-primary"
+          style="padding: 15px"
+          >Cook With Chosen Ingredients</a
+        >
+      </div>
+      <!-- end centered -->
       <div class="container">
         <div class="recipe-index card-columns">
+          <div class="card">
+            <div class="index-box">
+              <div class="index-head">
+                <h3>All</h3>
+              </div>
+              <div class="index-list">
+                <ul>
+                  <li
+                    v-for="ingredient in ingredients"
+                    v-bind:key="ingredient.id"
+                  >
+                    <p>
+                      {{ ingredient.name }} |<label> Have: </label>
+                      <input
+                        type="checkbox"
+                        v-model="ingredient.have"
+                        v-on:click="updateIngredient(ingredient)"
+                        id=""
+                      />
+                      <label> | Cook With:</label>
+                      <input
+                        type="checkbox"
+                        v-on:click="updateQueryString(ingredient)"
+                        v-model="ingredient.cookWith"
+                      />
+                      |
+                      <button
+                        v-on:click="deleteIngredient(ingredient)"
+                        class="fas fa-trash"
+                      ></button>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <!-- end index-list -->
+            </div>
+            <!-- end index-box -->
+          </div>
+          <!-- end col -->
+          <div class="card">
+            <div class="index-box">
+              <div class="index-head">
+                <h3>All</h3>
+              </div>
+              <div class="index-list">
+                <ul>
+                  <li
+                    v-for="ingredient in ingredients"
+                    v-bind:key="ingredient.id"
+                  >
+                    <p>
+                      {{ ingredient.name }} |<label> Have: </label>
+                      <input
+                        type="checkbox"
+                        v-model="ingredient.have"
+                        v-on:click="updateIngredient(ingredient)"
+                        id=""
+                      />
+                      <label> | Cook With:</label>
+                      <input
+                        type="checkbox"
+                        v-on:click="updateQueryString(ingredient)"
+                        v-model="ingredient.cookWith"
+                      />
+                      |
+                      <button
+                        v-on:click="deleteIngredient(ingredient)"
+                        class="fas fa-trash"
+                      ></button>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <!-- end index-list -->
+            </div>
+            <!-- end index-box -->
+          </div>
+          <!-- end col -->
           <div class="card">
             <div class="index-box">
               <div class="index-head">
