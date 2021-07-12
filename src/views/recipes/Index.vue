@@ -80,7 +80,13 @@ export default {
   },
   created: function () {
     var queryStringIngredients = this.$route.query.query;
-    this.queryIngredients = this.$route.query.query.split(",");
+    if (!queryStringIngredients) {
+      this.queryIngredients = [
+        "Add some ingredients you want to find recipes for!",
+      ];
+    } else {
+      this.queryIngredients = queryStringIngredients.split(",");
+    }
     console.log("recipesIndex", queryStringIngredients);
     axios.get(`/recipes?query=${queryStringIngredients}`).then((response) => {
       console.log(response.data);

@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-12 col-md">
             <div class="acc-box equal">
-              <h2>Login</h2>
+              <h2>{{ user.name }}</h2>
               <p>
                 <em>Update your account information below.</em>
               </p>
@@ -46,7 +46,9 @@
                     v-model="editUserParams.email"
                   />
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <div style="padding-bottom: 15px">
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </div>
                 <button v-on:click="destroyUser" class="btn btn-primary">
                   Delete Profile
                 </button>

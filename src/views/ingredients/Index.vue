@@ -1,7 +1,7 @@
 <template>
   <div class="ingredients-index">
     <div id="main">
-      <div class="container" style="padding: 40px">
+      <div class="container" style="padding-top: 40px">
         <div class="row">
           <div class="col-12 col-md-12">
             <div class="acc-box equal" style="padding: 20px">
@@ -37,7 +37,7 @@
     </div>
     <!-- end main -->
     <div id="main">
-      <div class="centered" style="padding-bottom: 50px">
+      <div class="centered" style="padding-bottom: 40px">
         <a
           :href="`/recipes?query=${queryStringIngredients}`"
           class="btn btn-primary"
@@ -51,7 +51,52 @@
           <div class="card">
             <div class="index-box">
               <div class="index-head">
-                <h3>All</h3>
+                <h3>A-G</h3>
+              </div>
+              <div class="index-list">
+                <ul>
+                  <li
+                    v-for="ingredient in ingredients"
+                    v-bind:key="ingredient.id"
+                  >
+                    <p class="h6">
+                      {{ ingredient.name }}
+                    </p>
+                    <label id="haveCheckbox"> Have: </label>
+                    <input
+                      type="checkbox"
+                      v-model="ingredient.have"
+                      v-on:click="updateIngredient(ingredient)"
+                      id="haveCheckbox"
+                    />
+                    <label id="cookWithCheckbox"> | Cook With:</label>
+                    <input
+                      type="checkbox"
+                      v-on:click="updateQueryString(ingredient)"
+                      v-model="ingredient.cookWith"
+                      id="cookWithCheckbox"
+                    />
+                    |
+                    <span
+                      ><button
+                        v-on:click="deleteIngredient(ingredient)"
+                        class="btn btn-primart"
+                      >
+                        Delete
+                      </button></span
+                    >
+                  </li>
+                </ul>
+              </div>
+              <!-- end index-list -->
+            </div>
+            <!-- end index-box -->
+          </div>
+          <!-- end col -->
+          <div class="card">
+            <div class="index-box">
+              <div class="index-head">
+                <h3>H-Q</h3>
               </div>
               <div class="index-list">
                 <ul>
@@ -90,46 +135,7 @@
           <div class="card">
             <div class="index-box">
               <div class="index-head">
-                <h3>All</h3>
-              </div>
-              <div class="index-list">
-                <ul>
-                  <li
-                    v-for="ingredient in ingredients"
-                    v-bind:key="ingredient.id"
-                  >
-                    <p>
-                      {{ ingredient.name }} |<label> Have: </label>
-                      <input
-                        type="checkbox"
-                        v-model="ingredient.have"
-                        v-on:click="updateIngredient(ingredient)"
-                        id=""
-                      />
-                      <label> | Cook With:</label>
-                      <input
-                        type="checkbox"
-                        v-on:click="updateQueryString(ingredient)"
-                        v-model="ingredient.cookWith"
-                      />
-                      |
-                      <button
-                        v-on:click="deleteIngredient(ingredient)"
-                        class="fas fa-trash"
-                      ></button>
-                    </p>
-                  </li>
-                </ul>
-              </div>
-              <!-- end index-list -->
-            </div>
-            <!-- end index-box -->
-          </div>
-          <!-- end col -->
-          <div class="card">
-            <div class="index-box">
-              <div class="index-head">
-                <h3>All</h3>
+                <h3>R-Z</h3>
               </div>
               <div class="index-list">
                 <ul>
