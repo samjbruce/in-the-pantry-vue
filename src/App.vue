@@ -36,21 +36,9 @@
                   id="navbarSupportedContent"
                 >
                   <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item active" v-if="!isLoggedIn()">
                       <router-link to="/" class="nav-link"
                         >Home
-                        <span class="sr-only">(current)</span></router-link
-                      >
-                    </li>
-                    <li class="nav-item active" v-if="!isLoggedIn()">
-                      <router-link to="/signup" class="nav-link"
-                        >Signup
-                        <span class="sr-only">(current)</span></router-link
-                      >
-                    </li>
-                    <li class="nav-item active" v-if="!isLoggedIn()">
-                      <router-link to="/login" class="nav-link"
-                        >Login
                         <span class="sr-only">(current)</span></router-link
                       >
                     </li>
@@ -121,16 +109,6 @@
                   </ul>
                 </div>
                 <!-- end social-container -->
-                <div class="search-container">
-                  <button type="button" class="buttonsearch" id="buttonsearch">
-                    <i class="fas fa-search openclosesearch"></i
-                    ><i
-                      class="fas fa-times openclosesearch"
-                      style="display: none"
-                    ></i>
-                  </button>
-                </div>
-                <!-- end search-container -->
               </nav>
             </div>
             <!-- end col-md-3 -->
@@ -142,21 +120,6 @@
       <!-- end header-navigation -->
     </header>
     <!-- end #masthead -->
-    <div id="nav">
-      <span v-if="!isLoggedIn()">
-        <router-link to="/">Home |</router-link>
-        <router-link to="/signup">Signup |</router-link>
-        <router-link to="/login"> Login |</router-link>
-      </span>
-      <span v-if="isLoggedIn()">
-        <router-link :to="`/users/${getUserId()}`"> My Profile |</router-link>
-        <router-link to="/ingredients"> Ingredients |</router-link>
-        <router-link to="/favorites"> Recipe Box |</router-link>
-        <router-link to="/recipes"> Find New Recipes |</router-link>
-        <router-link to="/shopping-list"> Shopping List |</router-link>
-        <router-link to="/logout"> Logout |</router-link>
-      </span>
-    </div>
     <router-view />
   </div>
 </template>
