@@ -6,15 +6,35 @@
           <div class="row">
             <div class="col">
               <div class="recipe-lvl">
+                <button v-on:click="previousScreen()" class="btn btn-primary">
+                  Back
+                </button>
+                <br /><br />
                 <span>TIME : {{ recipe.prep_time }} minutes</span>
               </div>
               <!-- end recipe level -->
               <div class="recipe-head">
                 <h1 class="recipe-title">{{ recipe.title }}</h1>
                 <div class="recipe-auth">
-                  <span>Posted by <a href="#">Dina Makulatuwa</a></span>
+                  <span
+                    >Posted by
+                    <a :href="recipe.source_url" target="_blank">{{
+                      recipe.source
+                    }}</a></span
+                  >
                 </div>
                 <!-- recipe author -->
+                <div class="recipe-finger">
+                  <div class="box-sharing">
+                    <span v-if="recipe.recipe_id == favoritedRecipeId"> </span>
+                    <span v-else>
+                      <a v-on:click="favoriteNew()"
+                        ><i class="fas fa-bookmark"></i
+                      ></a>
+                    </span>
+                  </div>
+                </div>
+                <!-- end recipe finger -->
               </div>
             </div>
             <!-- end col -->
@@ -32,25 +52,7 @@
               <div class="detail-desc">
                 <p><strong>DESCRIPTION</strong></p>
                 <p>
-                  Maecenas eu maximus turpis. Aliquam eget libero vitae elit
-                  tempor mollis. Curabitur sed mi et quam varius
-                  <em>rhoncus velex</em>. Mauris facilisis consequat libero non
-                  varius. Suspendisse nec quam tincidunt, imperdiet risus sed,
-                  finibus erat. Curabitur egestas nulla non dolor
-                  <a href="#">gravida</a>, maximus dictum massa lacinia. Cras
-                  porttitor, diam ac lacinia scelerisque, arcu arcu aliquet
-                  quam, non dignissim tortor turpis at mauris. Ut eget euismod
-                  nulla.
-                </p>
-
-                <p>
-                  Donec quis finibus nibh. Donec mattis id orci sed dapibus.
-                  Praesent augue odio, imperdiet sed mollis in, vehicula quis
-                  nulla. Ut eu vulputate ligula. Vivamus volutpat lectus dolor,
-                  sed congue elit rhoncus pharetra. Praesent non posuere felis.
-                  Ut aliquam luctus odio, ac commodo felis consectetur nec.
-                  Integer vehicula sit amet erat ut pharetra. Mauris ornare
-                  ligula dui, id placerat lacus iaculis sed.
+                  <span v-html="recipe.summary"></span>
                 </p>
               </div>
               <!-- recipe desc -->
@@ -74,11 +76,11 @@
             <!-- end col -->
             <div class="direction col-md-8">
               <p><strong>DIRECTIONS</strong></p>
-              <ol
-                v-for="instruction in recipe.instructions"
-                v-bind:key="instruction.id"
-              >
-                <li>
+              <ol>
+                <li
+                  v-for="instruction in recipe.instructions"
+                  v-bind:key="instruction.id"
+                >
                   <p>{{ instruction }}</p>
                 </li>
               </ol>
@@ -96,18 +98,37 @@
       <!-- end container -->
     </div>
     <!-- end main -->
-    <button v-on:click="previousScreen()">Back</button>
-    <br /><br />
-    <span v-if="recipe.recipe_id == favoritedRecipeId"> </span>
-    <span v-else>
-      <button v-on:click="favoriteNew()">Add to Favorites</button>
-    </span>
-    <br /><br />
-    <div v-for="similarRecipe in similarRecipes" v-bind:key="similarRecipe.id">
-      <p>{{ similarRecipe.title }}</p>
-      <p>Prep Time: {{ similarRecipe.readyInMinutes }} minutes</p>
-      <a :href="`/recipes/${similarRecipe.id}`">More Info</a>
+    <div class="related-recipe">
+      <div class="container">
+        <h3>RELATED RECIPES</h3>
+        <div class="row">
+          <div
+            class="col-6 col-md-3"
+            v-for="similarRecipe in similarRecipes"
+            v-bind:key="similarRecipe.id"
+          >
+            <div class="recipe-desc">
+              <h2 class="recipe-title">
+                <a :href="`/recipes/${similarRecipe.id}`">{{
+                  similarRecipe.title
+                }}</a>
+              </h2>
+              <span
+                ><i class="fas fa-clock"></i>&nbsp;{{
+                  similarRecipe.readyInMinutes
+                }}
+                minutes</span
+              >
+            </div>
+            <!-- end recipe-desc -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end container -->
     </div>
+    <!-- related recipe -->
   </div>
 </template>
 

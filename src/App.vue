@@ -6,12 +6,13 @@
           <div class="row">
             <div class="col col-md-2">
               <div class="site-branding navbar-brand">
-                <a href="#"
+                <h2>In The Pantry</h2>
+                <!-- <a href="#"
                   ><img
                     src="images/logo.png"
                     alt="Food Recipe Web Template"
                     title="Taplak"
-                /></a>
+                /></a> -->
               </div>
               <!-- end logo -->
             </div>
