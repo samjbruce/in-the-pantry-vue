@@ -170,7 +170,7 @@ export default {
       console.log(this.recipe.recipe_id);
     },
     previousScreen: function () {
-      this.$router.go(-1);
+      this.$router.go(-2);
     },
   },
 };

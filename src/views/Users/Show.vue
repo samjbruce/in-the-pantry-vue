@@ -62,9 +62,6 @@
       <!-- end container -->
     </div>
     <!-- end main -->
-
-    <label>Image URL: </label>
-    <input type="text" v-model="editUserParams.image_url" /><br /><br />
   </div>
 </template>
 

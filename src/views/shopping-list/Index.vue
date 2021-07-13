@@ -11,7 +11,7 @@
     <!-- end head-title -->
     <div id="main">
       <div class="container">
-        <div class="recipe-index card-columns">
+        <div class="recipe-index centered" style="padding: 0px 350px 0px">
           <div class="card">
             <div class="index-box">
               <div class="index-head">
@@ -24,7 +24,9 @@
                     v-bind:key="ingredient.id"
                   >
                     <p>
-                      {{ ingredient.name }} |<label>Purchased:</label>
+                      <strong>{{ ingredient.name }}</strong> |<label
+                        >Purchased:</label
+                      >
                       <input
                         type="checkbox"
                         v-model="ingredient.have"

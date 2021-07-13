@@ -37,12 +37,6 @@
                   id="navbarSupportedContent"
                 >
                   <ul class="navbar-nav">
-                    <li class="nav-item active" v-if="!isLoggedIn()">
-                      <router-link to="/" class="nav-link"
-                        >Home
-                        <span class="sr-only">(current)</span></router-link
-                      >
-                    </li>
                     <li class="nav-item active" v-if="isLoggedIn()">
                       <router-link to="/ingredients" class="nav-link"
                         >Ingredients
@@ -50,11 +44,18 @@
                       >
                     </li>
                     <li class="nav-item active" v-if="isLoggedIn()">
-                      <router-link to="/recipes" class="nav-link"
-                        >Find New Recipes
+                      <router-link to="/favorites" class="nav-link"
+                        >Recipe Box
                         <span class="sr-only">(current)</span></router-link
                       >
                     </li>
+                    <li class="nav-item active" v-if="isLoggedIn()">
+                      <router-link to="/shopping-list" class="nav-link"
+                        >Grocery List
+                        <span class="sr-only">(current)</span></router-link
+                      >
+                    </li>
+
                     <li class="nav-item dropdown" v-if="isLoggedIn()">
                       <a
                         class="nav-link dropdown-toggle"
@@ -70,12 +71,6 @@
                         class="dropdown-menu"
                         aria-labelledby="navbarDropdown1"
                       >
-                        <router-link class="dropdown-item" to="/favorites"
-                          >Recipe Box</router-link
-                        >
-                        <router-link class="dropdown-item" to="/shopping-list"
-                          >Shopping List</router-link
-                        >
                         <router-link
                           class="dropdown-item"
                           :to="`/users/${getUserId()}`"
