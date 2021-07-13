@@ -47,11 +47,11 @@
       </div>
       <!-- end centered -->
       <div class="container">
-        <div class="recipe-index card-columns">
+        <div class="recipe-index centered" style="padding: 0px 300px 0px">
           <div class="card">
             <div class="index-box">
               <div class="index-head">
-                <h3>A-G</h3>
+                <h3>Ingredients</h3>
               </div>
               <div class="index-list">
                 <ul>
@@ -62,29 +62,81 @@
                     <p class="h6">
                       {{ ingredient.name }}
                     </p>
+
                     <label id="haveCheckbox"> Have: </label>
+
                     <input
                       type="checkbox"
                       v-model="ingredient.have"
                       v-on:click="updateIngredient(ingredient)"
                       id="haveCheckbox"
                     />
-                    <label id="cookWithCheckbox"> | Cook With:</label>
+                    <label id="cookWithCheckbox"> |Cook With:</label>
                     <input
                       type="checkbox"
                       v-on:click="updateQueryString(ingredient)"
                       v-model="ingredient.cookWith"
                       id="cookWithCheckbox"
                     />
-                    |
-                    <span
-                      ><button
+
+                    <span>
+                      <button
                         v-on:click="deleteIngredient(ingredient)"
-                        class="btn btn-primart"
+                        class="btn btn-primary"
                       >
                         Delete
-                      </button></span
-                    >
+                      </button>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <!-- end index-list -->
+            </div>
+            <!-- end index-box -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end card colum -->
+        <div class="recipe-index card-columns">
+          <div class="card">
+            <div class="index-box">
+              <div class="index-head">
+                <h3>Ingredients</h3>
+              </div>
+              <div class="index-list">
+                <ul>
+                  <li
+                    v-for="ingredient in ingredients"
+                    v-bind:key="ingredient.id"
+                  >
+                    <p class="h6">
+                      {{ ingredient.name }}
+                    </p>
+
+                    <label id="haveCheckbox"> Have: </label>
+
+                    <input
+                      type="checkbox"
+                      v-model="ingredient.have"
+                      v-on:click="updateIngredient(ingredient)"
+                      id="haveCheckbox"
+                    />
+                    <label id="cookWithCheckbox"> |Cook With:</label>
+                    <input
+                      type="checkbox"
+                      v-on:click="updateQueryString(ingredient)"
+                      v-model="ingredient.cookWith"
+                      id="cookWithCheckbox"
+                    />
+
+                    <span>
+                      <button
+                        v-on:click="deleteIngredient(ingredient)"
+                        class="btn btn-primary"
+                      >
+                        Delete
+                      </button>
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -96,7 +148,7 @@
           <div class="card">
             <div class="index-box">
               <div class="index-head">
-                <h3>H-Q</h3>
+                <h3>Ingredients</h3>
               </div>
               <div class="index-list">
                 <ul>
@@ -104,26 +156,34 @@
                     v-for="ingredient in ingredients"
                     v-bind:key="ingredient.id"
                   >
-                    <p>
-                      {{ ingredient.name }} |<label> Have: </label>
-                      <input
-                        type="checkbox"
-                        v-model="ingredient.have"
-                        v-on:click="updateIngredient(ingredient)"
-                        id=""
-                      />
-                      <label> | Cook With:</label>
-                      <input
-                        type="checkbox"
-                        v-on:click="updateQueryString(ingredient)"
-                        v-model="ingredient.cookWith"
-                      />
-                      |
+                    <p class="h6">
+                      {{ ingredient.name }}
+                    </p>
+
+                    <label id="haveCheckbox"> Have: </label>
+
+                    <input
+                      type="checkbox"
+                      v-model="ingredient.have"
+                      v-on:click="updateIngredient(ingredient)"
+                      id="haveCheckbox"
+                    />
+                    <label id="cookWithCheckbox"> |Cook With:</label>
+                    <input
+                      type="checkbox"
+                      v-on:click="updateQueryString(ingredient)"
+                      v-model="ingredient.cookWith"
+                      id="cookWithCheckbox"
+                    />
+
+                    <span>
                       <button
                         v-on:click="deleteIngredient(ingredient)"
-                        class="fas fa-trash"
-                      ></button>
-                    </p>
+                        class="btn btn-primary"
+                      >
+                        Delete
+                      </button>
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -135,7 +195,7 @@
           <div class="card">
             <div class="index-box">
               <div class="index-head">
-                <h3>R-Z</h3>
+                <h3>Ingredients</h3>
               </div>
               <div class="index-list">
                 <ul>
@@ -143,26 +203,34 @@
                     v-for="ingredient in ingredients"
                     v-bind:key="ingredient.id"
                   >
-                    <p>
-                      {{ ingredient.name }} |<label> Have: </label>
-                      <input
-                        type="checkbox"
-                        v-model="ingredient.have"
-                        v-on:click="updateIngredient(ingredient)"
-                        id=""
-                      />
-                      <label> | Cook With:</label>
-                      <input
-                        type="checkbox"
-                        v-on:click="updateQueryString(ingredient)"
-                        v-model="ingredient.cookWith"
-                      />
-                      |
+                    <p class="h6">
+                      {{ ingredient.name }}
+                    </p>
+
+                    <label id="haveCheckbox"> Have: </label>
+
+                    <input
+                      type="checkbox"
+                      v-model="ingredient.have"
+                      v-on:click="updateIngredient(ingredient)"
+                      id="haveCheckbox"
+                    />
+                    <label id="cookWithCheckbox"> |Cook With:</label>
+                    <input
+                      type="checkbox"
+                      v-on:click="updateQueryString(ingredient)"
+                      v-model="ingredient.cookWith"
+                      id="cookWithCheckbox"
+                    />
+
+                    <span>
                       <button
                         v-on:click="deleteIngredient(ingredient)"
-                        class="fas fa-trash"
-                      ></button>
-                    </p>
+                        class="btn btn-primary"
+                      >
+                        Delete
+                      </button>
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -192,11 +260,51 @@ export default {
       errors: [],
       newIngredientParams: {},
       queryStringIngredients: "",
+      firstLetter: "",
+      // agIngredients: [],
+      // hqIngredients: [],
+      // rzIngredients: [],
     };
   },
   created: function () {
     axios.get("/ingredients").then((response) => {
       this.ingredients = response.data;
+      // this.agIngredients = this.ingredients.filter(
+      //   (ingredient) =>
+      //     ingredient.name.startsWith("A") ||
+      //     ingredient.name.startsWith("B") ||
+      //     ingredient.name.startsWith("C") ||
+      //     ingredient.name.startsWith("D") ||
+      //     ingredient.name.startsWith("E") ||
+      //     ingredient.name.startsWith("F") ||
+      //     ingredient.name.startsWith("G")
+      // );
+      // this.hqIngredients = this.ingredients.filter(
+      //   (ingredient) =>
+      //     ingredient.name.startsWith("H") ||
+      //     ingredient.name.startsWith("I") ||
+      //     ingredient.name.startsWith("J") ||
+      //     ingredient.name.startsWith("K") ||
+      //     ingredient.name.startsWith("L") ||
+      //     ingredient.name.startsWith("M") ||
+      //     ingredient.name.startsWith("N") ||
+      //     ingredient.name.startsWith("O") ||
+      //     ingredient.name.startsWith("P") ||
+      //     ingredient.name.startsWith("Q")
+      // );
+      // this.rzIngredients = this.ingredients.filter(
+      //   (ingredient) =>
+      //     ingredient.name.startsWith("R") ||
+      //     ingredient.name.startsWith("S") ||
+      //     ingredient.name.startsWith("T") ||
+      //     ingredient.name.startsWith("U") ||
+      //     ingredient.name.startsWith("V") ||
+      //     ingredient.name.startsWith("W") ||
+      //     ingredient.name.startsWith("X") ||
+      //     ingredient.name.startsWith("Y") ||
+      //     ingredient.name.startsWith("Z")
+      // );
+      // console.log(this.agIngredients);
       console.log(response.data);
     });
   },
@@ -226,7 +334,7 @@ export default {
         .delete(`/ingredients/${ingredient.id}`, ingredient)
         .then((response) => {
           console.log("ingredient destroyed", response);
-          var index = this.ingredients.indexOf(ingredient);
+          var index = this.agIngredients.indexOf(ingredient);
           this.ingredients.splice(index, 1);
         });
     },
