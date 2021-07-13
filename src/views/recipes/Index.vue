@@ -2,7 +2,7 @@
   <div class="recipes-index">
     <div class="head-title">
       <div class="container">
-        <h4>You're searching for recipes with:</h4>
+        <h3>You're searching for recipes with:</h3>
         <div
           v-for="queryIngredient in queryIngredients"
           v-bind:key="queryIngredient.id"
