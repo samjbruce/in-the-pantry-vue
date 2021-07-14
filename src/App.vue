@@ -6,13 +6,7 @@
           <div class="row">
             <div class="col col-md-2">
               <div class="site-branding navbar-brand">
-                <h2>In The Pantry</h2>
-                <!-- <a href="#"
-                  ><img
-                    src="images/logo.png"
-                    alt="Food Recipe Web Template"
-                    title="Taplak"
-                /></a> -->
+                <a href="/ingredients"><img src="images/BlackLogo.png" /></a>
               </div>
               <!-- end logo -->
             </div>
@@ -43,6 +37,7 @@
                         <span class="sr-only">(current)</span></router-link
                       >
                     </li>
+
                     <li class="nav-item active" v-if="isLoggedIn()">
                       <router-link to="/favorites" class="nav-link"
                         >Recipe Box

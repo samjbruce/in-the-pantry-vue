@@ -22,15 +22,20 @@
                   <a v-on:click="deleteFavorite(favorite)" class="bookmarker"
                     ><i class="fas fa-trash"></i
                   ></a>
-                  <a v-on:click="recipeShow(favorite)" class="view-recipe"
+                  <a
+                    :href="`/recipes/${favorite.recipe.recipe_id}`"
+                    v-on:click="recipeShow(favorite)"
+                    class="view-recipe"
                     >VIEW RECIPE</a
                   >
                 </div>
                 <div class="recipe-desc">
                   <h2 class="recipe-title">
-                    <a v-on:click="recipeShow(favorite)">{{
-                      favorite.recipe.title
-                    }}</a>
+                    <a
+                      :href="`/recipes/${favorite.recipe.recipe_id}`"
+                      v-on:click="recipeShow(favorite)"
+                      >{{ favorite.recipe.title }}</a
+                    >
                   </h2>
                   <span
                     ><i class="fas fa-clock"></i>&nbsp;{{
@@ -85,7 +90,7 @@ export default {
         });
     },
     recipeShow: function (favorite) {
-      this.$router.push(`/recipes/${favorite.recipe.recipe_id}`);
+      // this.$router.push(`/recipes/${favorite.recipe.recipe_id}`);
       localStorage.setItem("recipe_id", favorite.recipe.recipe_id);
     },
   },

@@ -210,50 +210,12 @@ export default {
       newIngredientParams: {},
       queryStringIngredients: "",
       firstLetter: "",
-      // agIngredients: [],
-      // hqIngredients: [],
-      // rzIngredients: [],
     };
   },
   created: function () {
     axios.get("/ingredients").then((response) => {
       this.ingredients = response.data;
-      // this.agIngredients = this.ingredients.filter(
-      //   (ingredient) =>
-      //     ingredient.name.startsWith("A") ||
-      //     ingredient.name.startsWith("B") ||
-      //     ingredient.name.startsWith("C") ||
-      //     ingredient.name.startsWith("D") ||
-      //     ingredient.name.startsWith("E") ||
-      //     ingredient.name.startsWith("F") ||
-      //     ingredient.name.startsWith("G")
-      // );
-      // this.hqIngredients = this.ingredients.filter(
-      //   (ingredient) =>
-      //     ingredient.name.startsWith("H") ||
-      //     ingredient.name.startsWith("I") ||
-      //     ingredient.name.startsWith("J") ||
-      //     ingredient.name.startsWith("K") ||
-      //     ingredient.name.startsWith("L") ||
-      //     ingredient.name.startsWith("M") ||
-      //     ingredient.name.startsWith("N") ||
-      //     ingredient.name.startsWith("O") ||
-      //     ingredient.name.startsWith("P") ||
-      //     ingredient.name.startsWith("Q")
-      // );
-      // this.rzIngredients = this.ingredients.filter(
-      //   (ingredient) =>
-      //     ingredient.name.startsWith("R") ||
-      //     ingredient.name.startsWith("S") ||
-      //     ingredient.name.startsWith("T") ||
-      //     ingredient.name.startsWith("U") ||
-      //     ingredient.name.startsWith("V") ||
-      //     ingredient.name.startsWith("W") ||
-      //     ingredient.name.startsWith("X") ||
-      //     ingredient.name.startsWith("Y") ||
-      //     ingredient.name.startsWith("Z")
-      // );
-      // console.log(this.agIngredients);
+
       console.log(response.data);
     });
   },
@@ -283,7 +245,7 @@ export default {
         .delete(`/ingredients/${ingredient.id}`, ingredient)
         .then((response) => {
           console.log("ingredient destroyed", response);
-          var index = this.agIngredients.indexOf(ingredient);
+          var index = this.ingredients.indexOf(ingredient);
           this.ingredients.splice(index, 1);
         });
     },
