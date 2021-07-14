@@ -46,6 +46,28 @@
                     v-model="editUserParams.email"
                   />
                 </div>
+                <div class="form-group">
+                  <label for="InputPassword">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="InputPassword"
+                    placeholder="Enter password"
+                    v-model="editUserParams.password"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="InputPasswordConfirmation"
+                    >Confirm Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="InputPasswordConfirmation"
+                    placeholder="Password must match above"
+                    v-model="editUserParams.password_confirmation"
+                  />
+                </div>
                 <div style="padding-bottom: 15px">
                   <button type="submit" class="btn btn-primary">Update</button>
                 </div>
