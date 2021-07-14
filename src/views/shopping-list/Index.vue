@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-list-index">
-    <div class="head-title">
+    <div class="head-title" style="padding: 40px">
       <div class="container">
         <div class="widget-title-outer">
           <h3 class="page-title">Your Grocery Shopping List</h3>

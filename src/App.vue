@@ -6,7 +6,9 @@
           <div class="row">
             <div class="col col-md-2">
               <div class="site-branding navbar-brand">
-                <a href="/ingredients"><img src="images/BlackLogo.png" /></a>
+                <router-link to="/ingredients"
+                  ><img src="/images/BlackLogo.png"
+                /></router-link>
               </div>
               <!-- end logo -->
             </div>
@@ -115,23 +117,7 @@
   </div>
 </template>
 
-<style>
-#app {
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<style></style>
 
 <script>
 export default {

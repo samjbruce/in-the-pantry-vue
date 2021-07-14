@@ -1,6 +1,6 @@
 <template>
   <div class="ingredients-index">
-    <div class="head-title">
+    <div class="head-title" style="padding: 40px">
       <h3 class="page-title">Your Current Ingredients</h3>
     </div>
     <div id="main">
@@ -27,8 +27,10 @@
                     )"
                     v-bind:key="ingredient.id"
                   >
-                    <a href="">{{ ingredient.name }}</a
-                    ><br />
+                    <p style="color: #e33d26">
+                      {{ ingredient.name }}
+                    </p>
+
                     <label id="haveCheckbox"> Have: </label>
 
                     <input
@@ -74,7 +76,9 @@
                     )"
                     v-bind:key="ingredient.id"
                   >
-                    <a href="">{{ ingredient.name }}</a> <br />
+                    <p style="color: #e33d26">
+                      {{ ingredient.name }}
+                    </p>
                     <label id="haveCheckbox"> Have: </label>
 
                     <input
@@ -121,8 +125,9 @@
                     )"
                     v-bind:key="ingredient.id"
                   >
-                    <a href="">{{ ingredient.name }}</a>
-                    <br />
+                    <p style="color: #e33d26">
+                      {{ ingredient.name }}
+                    </p>
                     <label id="haveCheckbox"> Have: </label>
 
                     <input
@@ -177,8 +182,9 @@
                 <div class="form-group">
                   <input
                     type="text"
+                    id="textfield"
                     class="form-control"
-                    id="InputEmailAcc1"
+                    autocomplete="off"
                     placeholder="Enter one ingredient"
                     v-model="newIngredientParams.name"
                   />
@@ -209,7 +215,6 @@ export default {
       errors: [],
       newIngredientParams: {},
       queryStringIngredients: "",
-      firstLetter: "",
     };
   },
   created: function () {
@@ -234,6 +239,17 @@ export default {
         .post("/ingredients", this.newIngredientParams)
         .then((response) => {
           this.ingredients.unshift(response.data);
+          this.ingredients = this.ingredients.sort((a, b) => {
+            var aName = a.name;
+            var bName = b.name;
+            if (aName < bName) {
+              return -1;
+            }
+            if (aName > bName) {
+              return 1;
+            }
+            return 0;
+          });
           console.log(response.data);
         })
         .catch((error) => {

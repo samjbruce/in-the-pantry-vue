@@ -1,6 +1,6 @@
 <template>
   <div class="recipes-index">
-    <div class="head-title">
+    <div class="head-title" style="padding: 40px">
       <div class="container">
         <h3>You're searching for recipes with:</h3>
         <div
@@ -25,11 +25,13 @@
               >
                 <div class="recipe-thumb">
                   <img :src="recipe.image_url" alt="Recipe Image" />
-                  <a href="#" class="bookmarker"
+                  <a v-on:click="favoriteNew(recipe)" class="bookmarker"
                     ><i class="fas fa-bookmark"></i
                   ></a>
-                  <a :href="`/recipes/${recipe.recipe_id}`" class="view-recipe"
-                    >VIEW RECIPE</a
+                  <router-link
+                    :to="`/recipes/${recipe.recipe_id}`"
+                    class="view-recipe"
+                    >VIEW RECIPE</router-link
                   >
                 </div>
                 <div class="recipe-desc">
@@ -99,6 +101,7 @@ export default {
     },
     favoriteNew: function (recipe) {
       this.newFavoriteParams.spoonacular_api_id = recipe.recipe_id;
+      console.log(this.newFavoriteParams);
       axios.post("/favorites", this.newFavoriteParams).then((response) => {
         console.log(response.data);
         this.$router.push("/favorites");

@@ -3,7 +3,7 @@
     <div id="page" class="hfeed site">
       <!-- start page wrapper -->
 
-      <div class="head-title">
+      <div class="head-title" style="padding: 40px">
         <div class="container">
           <h2 class="page-title">Login / Register</h2>
         </div>
@@ -35,6 +35,7 @@
                     <input
                       type="email"
                       class="form-control"
+                      autocomplete="off"
                       id="InputEmailAcc1"
                       placeholder="Enter email"
                       v-model="email"

@@ -1,6 +1,6 @@
 <template>
   <div class="favorites-index">
-    <div class="head-title">
+    <div class="head-title" style="padding: 40px">
       <div class="container">
         <h2 class="page-title">Recipe Box</h2>
       </div>

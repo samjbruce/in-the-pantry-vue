@@ -1,6 +1,6 @@
 <template>
   <div class="users-show">
-    <div class="head-title">
+    <div class="head-title" style="padding: 40px">
       <div class="container">
         <h2 class="page-title">Your Account</h2>
       </div>
