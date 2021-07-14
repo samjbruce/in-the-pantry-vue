@@ -1,10 +1,13 @@
 <template>
   <div class="ingredients-index">
     <div class="head-title" style="padding: 40px">
-      <h3 class="page-title">Your Current Ingredients</h3>
+      <h2 class="page-title">Your Pantry Online</h2>
     </div>
     <div id="main">
       <div class="centered" style="padding-bottom: 40px">
+        <h4>Add ingredients. Make a grocery shopping list. Plan your meals.</h4>
+        <br />
+
         <a
           :href="`/recipes?query=${queryStringIngredients}`"
           class="btn btn-primary"
@@ -14,161 +17,10 @@
       </div>
       <!-- end centered -->
       <div class="container">
-        <div class="recipe-index card-columns">
-          <div class="card">
-            <div class="index-box">
-              <div class="index-head"></div>
-              <div class="index-list">
-                <ul>
-                  <li
-                    v-for="ingredient in ingredients.slice(
-                      0,
-                      ingredients.length / 3 + 1
-                    )"
-                    v-bind:key="ingredient.id"
-                  >
-                    <p style="color: #e33d26">
-                      {{ ingredient.name }}
-                    </p>
-
-                    <label id="haveCheckbox"> Have: </label>
-
-                    <input
-                      type="checkbox"
-                      v-model="ingredient.have"
-                      v-on:click="updateIngredient(ingredient)"
-                      id="haveCheckbox"
-                    />
-                    <label id="cookWithCheckbox"> |Cook With:</label>
-                    <input
-                      type="checkbox"
-                      v-on:click="updateQueryString(ingredient)"
-                      v-model="ingredient.cookWith"
-                      id="cookWithCheckbox"
-                    />
-
-                    <span>
-                      <button
-                        v-on:click="deleteIngredient(ingredient)"
-                        class="btn btn-primary"
-                      >
-                        Delete
-                      </button>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <!-- end index-list -->
-            </div>
-            <!-- end index-box -->
-          </div>
-          <!-- end col -->
-
-          <div class="card">
-            <div class="index-box">
-              <div class="index-head"></div>
-              <div class="index-list">
-                <ul>
-                  <li
-                    v-for="ingredient in ingredients.slice(
-                      ingredients.length / 3 + 1,
-                      (ingredients.length / 3) * 2
-                    )"
-                    v-bind:key="ingredient.id"
-                  >
-                    <p style="color: #e33d26">
-                      {{ ingredient.name }}
-                    </p>
-                    <label id="haveCheckbox"> Have: </label>
-
-                    <input
-                      type="checkbox"
-                      v-model="ingredient.have"
-                      v-on:click="updateIngredient(ingredient)"
-                      id="haveCheckbox"
-                    />
-                    <label id="cookWithCheckbox"> |Cook With:</label>
-                    <input
-                      type="checkbox"
-                      v-on:click="updateQueryString(ingredient)"
-                      v-model="ingredient.cookWith"
-                      id="cookWithCheckbox"
-                    />
-
-                    <span>
-                      <button
-                        v-on:click="deleteIngredient(ingredient)"
-                        class="btn btn-primary"
-                      >
-                        Delete
-                      </button>
-                    </span>
-                    <!-- <span>4</span> -->
-                  </li>
-                </ul>
-              </div>
-              <!-- end index-list -->
-            </div>
-            <!-- end index-box -->
-          </div>
-          <!-- end col -->
-
-          <div class="card">
-            <div class="index-box">
-              <div class="index-head"></div>
-              <div class="index-list">
-                <ul>
-                  <li
-                    v-for="ingredient in ingredients.slice(
-                      (ingredients.length / 3) * 2,
-                      ingredients.length - 1
-                    )"
-                    v-bind:key="ingredient.id"
-                  >
-                    <p style="color: #e33d26">
-                      {{ ingredient.name }}
-                    </p>
-                    <label id="haveCheckbox"> Have: </label>
-
-                    <input
-                      type="checkbox"
-                      v-model="ingredient.have"
-                      v-on:click="updateIngredient(ingredient)"
-                      id="haveCheckbox"
-                    />
-                    <label id="cookWithCheckbox"> |Cook With:</label>
-                    <input
-                      type="checkbox"
-                      v-on:click="updateQueryString(ingredient)"
-                      v-model="ingredient.cookWith"
-                      id="cookWithCheckbox"
-                    />
-
-                    <span>
-                      <button
-                        v-on:click="deleteIngredient(ingredient)"
-                        class="btn btn-primary"
-                      >
-                        Delete
-                      </button>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <!-- end index-list -->
-            </div>
-            <!-- end index-box -->
-          </div>
-          <!-- end col -->
-        </div>
-        <!-- end card colum -->
-      </div>
-      <!-- end container -->
-      <div class="container" style="padding-top: 40px">
         <div class="row">
           <div class="col-12 col-md-12">
             <div class="acc-box equal" style="padding: 20px">
-              <h2>Add Some Ingredients to Your List!</h2>
+              <h2>Add Items Currently In Your Pantry!</h2>
               <form v-on:submit.prevent="createIngredient()">
                 <ul>
                   <li
@@ -196,6 +48,160 @@
           </div>
           <!-- end col -->
         </div>
+      </div>
+      <!-- end container -->
+      <div class="container">
+        <div class="recipe-index card-columns">
+          <div class="card">
+            <div class="index-box">
+              <div class="index-head"></div>
+              <div class="index-list">
+                <ul>
+                  <li
+                    v-for="ingredient in ingredients.slice(
+                      0,
+                      ingredients.length / 3 + 1
+                    )"
+                    v-bind:key="ingredient.id"
+                  >
+                    <p style="color: #e33d26">
+                      {{ ingredient.name }}
+                    </p>
+
+                    <label id="haveCheckbox"> I Currently Have It: </label>
+
+                    <input
+                      type="checkbox"
+                      v-model="ingredient.have"
+                      v-on:click="updateIngredient(ingredient)"
+                      id="haveCheckbox"
+                    /><br />
+                    <label id="cookWithCheckbox">
+                      I Want To Cook With It:</label
+                    >
+                    <input
+                      type="checkbox"
+                      v-on:click="updateQueryString(ingredient)"
+                      v-model="ingredient.cookWith"
+                      id="cookWithCheckbox"
+                    /><br />
+
+                    <button
+                      v-on:click="deleteIngredient(ingredient)"
+                      class="btn btn-primary"
+                    >
+                      Delete
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <!-- end index-list -->
+            </div>
+            <!-- end index-box -->
+          </div>
+          <!-- end col -->
+
+          <div class="card">
+            <div class="index-box">
+              <div class="index-head"></div>
+              <div class="index-list">
+                <ul>
+                  <li
+                    v-for="ingredient in ingredients.slice(
+                      ingredients.length / 3 + 1,
+                      (ingredients.length / 3) * 2
+                    )"
+                    v-bind:key="ingredient.id"
+                  >
+                    <p style="color: #e33d26">
+                      {{ ingredient.name }}
+                    </p>
+
+                    <label id="haveCheckbox"> I Currently Have It: </label>
+
+                    <input
+                      type="checkbox"
+                      v-model="ingredient.have"
+                      v-on:click="updateIngredient(ingredient)"
+                      id="haveCheckbox"
+                    /><br />
+                    <label id="cookWithCheckbox">
+                      I Want To Cook With It:</label
+                    >
+                    <input
+                      type="checkbox"
+                      v-on:click="updateQueryString(ingredient)"
+                      v-model="ingredient.cookWith"
+                      id="cookWithCheckbox"
+                    /><br />
+
+                    <button
+                      v-on:click="deleteIngredient(ingredient)"
+                      class="btn btn-primary"
+                    >
+                      Delete
+                    </button>
+
+                    <!-- <span>4</span> -->
+                  </li>
+                </ul>
+              </div>
+              <!-- end index-list -->
+            </div>
+            <!-- end index-box -->
+          </div>
+          <!-- end col -->
+
+          <div class="card">
+            <div class="index-box">
+              <div class="index-head"></div>
+              <div class="index-list">
+                <ul>
+                  <li
+                    v-for="ingredient in ingredients.slice(
+                      (ingredients.length / 3) * 2,
+                      ingredients.length - 1
+                    )"
+                    v-bind:key="ingredient.id"
+                  >
+                    <p style="color: #e33d26">
+                      {{ ingredient.name }}
+                    </p>
+
+                    <label id="haveCheckbox"> I Currently Have It: </label>
+
+                    <input
+                      type="checkbox"
+                      v-model="ingredient.have"
+                      v-on:click="updateIngredient(ingredient)"
+                      id="haveCheckbox"
+                    /><br />
+                    <label id="cookWithCheckbox">
+                      I Want To Cook With It:</label
+                    >
+                    <input
+                      type="checkbox"
+                      v-on:click="updateQueryString(ingredient)"
+                      v-model="ingredient.cookWith"
+                      id="cookWithCheckbox"
+                    /><br />
+
+                    <button
+                      v-on:click="deleteIngredient(ingredient)"
+                      class="btn btn-primary"
+                    >
+                      Delete
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <!-- end index-list -->
+            </div>
+            <!-- end index-box -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end card colum -->
       </div>
       <!-- end container -->
     </div>
