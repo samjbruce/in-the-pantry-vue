@@ -69,6 +69,7 @@
                       type="text"
                       class="form-control"
                       id="name"
+                      autocomplete="off"
                       placeholder="Enter name"
                       v-model="newUserParams.name"
                     />
@@ -79,6 +80,7 @@
                       type="email"
                       class="form-control"
                       id="InputEmailAcc"
+                      autocomplete="off"
                       placeholder="you@email.com"
                       v-model="newUserParams.email"
                     />
