@@ -39,10 +39,9 @@
                   </h2>
                   <span
                     ><i class="fas fa-clock"></i>&nbsp;{{
-                      favorite.recipe.prep_time_minutes
+                      favorite.recipe.prep_time
                     }}
-                    Minutes</span
-                  >
+                  </span>
                 </div>
                 <!-- end recipe-desc -->
               </div>
@@ -68,6 +67,7 @@ export default {
   data: function () {
     return {
       favorites: [],
+      preptime: [],
     };
   },
   created: function () {

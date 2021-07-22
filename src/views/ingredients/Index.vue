@@ -5,7 +5,7 @@
     </div>
     <div id="main">
       <div class="centered" style="padding-bottom: 40px">
-        <h4>Add ingredients. Make a grocery shopping list. Plan your meals.</h4>
+        <h4>Add ingredients. Find a recipe. Plan your meals.</h4>
         <br />
 
         <a

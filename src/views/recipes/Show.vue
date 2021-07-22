@@ -10,7 +10,7 @@
                   Back
                 </button>
                 <br /><br />
-                <span>TIME : {{ recipe.prep_time }} minutes</span>
+                <span>TIME : {{ recipe.prep_time }}</span>
               </div>
               <!-- end recipe level -->
               <div class="recipe-head">
@@ -100,7 +100,7 @@
     <!-- end main -->
     <div class="related-recipe">
       <div class="container">
-        <h3>RELATED RECIPES</h3>
+        <h3>SIMILAR RECIPES</h3>
         <div class="row">
           <div
             class="col-6 col-md-3"
@@ -114,11 +114,8 @@
                 }}</a>
               </h2>
               <span
-                ><i class="fas fa-clock"></i>&nbsp;{{
-                  similarRecipe.readyInMinutes
-                }}
-                minutes</span
-              >
+                ><i class="fas fa-clock"></i>&nbsp;{{ similarRecipe.prep_time }}
+              </span>
             </div>
             <!-- end recipe-desc -->
           </div>
